@@ -10,17 +10,17 @@
 <div id="content" class="border">
 
   <!-- Banner Section -->
-  <section class="bg-gradient-to-r from-blue-700 to-indigo-600 text-white py-24">
-    <div class="container mx-auto text-center px-6">
-      <h2 class="text-5xl font-bold mb-4 leading-tight">Welcome to Smart Contact Manager</h2>
-      <p class="text-xl mb-10 text-blue-100">Manage all your contacts effortlessly and securely — in one place, from any device.</p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4">
+  <section class="py-24 text-white bg-gradient-to-r from-blue-700 to-indigo-600">
+    <div class="container px-6 mx-auto text-center">
+      <h2 class="mb-4 text-5xl font-bold leading-tight">Welcome again to Smart Contact Manager</h2>
+      <p class="mb-10 text-xl text-blue-100">Manage all your contacts effortlessly and securely — in one place, from any device.</p>
+      <div class="flex flex-col justify-center gap-4 sm:flex-row">
         <a data-th-href="@{'/register'}"
-           class="bg-white text-blue-700 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300 shadow">
+           class="px-8 py-3 font-semibold text-blue-700 transition duration-300 bg-white rounded-full shadow hover:bg-gray-100">
           Get Started Free
         </a>
         <a data-th-href="@{'/about'}"
-           class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-700 transition duration-300">
+           class="px-8 py-3 font-semibold text-white transition duration-300 border-2 border-white rounded-full hover:bg-white hover:text-blue-700">
           Learn More
         </a>
       </div>
@@ -29,29 +29,29 @@
 
   <!-- Features Section -->
   <section class="py-20 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-4 text-gray-800 dark:text-white">Why SCM 2.0?</h2>
-      <p class="text-gray-500 dark:text-gray-400 mb-12 max-w-xl mx-auto">Built with Spring Boot, secured with OAuth2, and hosted on AWS — enterprise-grade contact management for everyone.</p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
-          <div class="bg-blue-100 dark:bg-blue-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5">
-            <i class="fas fa-address-book text-blue-600 dark:text-blue-300 text-2xl"></i>
+    <div class="container px-6 mx-auto text-center">
+      <h2 class="mb-4 text-3xl font-bold text-gray-800 dark:text-white">Why SCM 2.0?</h2>
+      <p class="max-w-xl mx-auto mb-12 text-gray-500 dark:text-gray-400">Built with Spring Boot, secured with OAuth2, and hosted on AWS — enterprise-grade contact management for everyone.</p>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div class="p-8 transition duration-300 transform shadow bg-gray-50 dark:bg-gray-800 rounded-2xl hover:shadow-lg hover:scale-105">
+          <div class="flex items-center justify-center w-16 h-16 mx-auto mb-5 bg-blue-100 rounded-full dark:bg-blue-900">
+            <i class="text-2xl text-blue-600 fas fa-address-book dark:text-blue-300"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Easy Contact Management</h3>
+          <h3 class="mb-2 text-xl font-semibold text-gray-800 dark:text-white">Easy Contact Management</h3>
           <p class="text-gray-600 dark:text-gray-400">Add, edit, search, and organise your contacts with photo, LinkedIn, website and more.</p>
         </div>
-        <div class="p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
-          <div class="bg-green-100 dark:bg-green-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5">
-            <i class="fas fa-lock text-green-600 dark:text-green-300 text-2xl"></i>
+        <div class="p-8 transition duration-300 transform shadow bg-gray-50 dark:bg-gray-800 rounded-2xl hover:shadow-lg hover:scale-105">
+          <div class="flex items-center justify-center w-16 h-16 mx-auto mb-5 bg-green-100 rounded-full dark:bg-green-900">
+            <i class="text-2xl text-green-600 fas fa-lock dark:text-green-300"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Secure Storage</h3>
+          <h3 class="mb-2 text-xl font-semibold text-gray-800 dark:text-white">Secure Storage</h3>
           <p class="text-gray-600 dark:text-gray-400">Spring Security + BCrypt passwords + OAuth2 with Google & GitHub. Your data stays yours.</p>
         </div>
-        <div class="p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow hover:shadow-lg transition duration-300 transform hover:scale-105">
-          <div class="bg-purple-100 dark:bg-purple-900 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-5">
-            <i class="fas fa-globe text-purple-600 dark:text-purple-300 text-2xl"></i>
+        <div class="p-8 transition duration-300 transform shadow bg-gray-50 dark:bg-gray-800 rounded-2xl hover:shadow-lg hover:scale-105">
+          <div class="flex items-center justify-center w-16 h-16 mx-auto mb-5 bg-purple-100 rounded-full dark:bg-purple-900">
+            <i class="text-2xl text-purple-600 fas fa-globe dark:text-purple-300"></i>
           </div>
-          <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">24/7 Access</h3>
+          <h3 class="mb-2 text-xl font-semibold text-gray-800 dark:text-white">24/7 Access</h3>
           <p class="text-gray-600 dark:text-gray-400">Deployed on AWS EC2. Access your contacts anytime, anywhere from any device.</p>
         </div>
       </div>
@@ -60,40 +60,40 @@
 
   <!-- How it works -->
   <section class="py-20 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-12 text-gray-800 dark:text-white">How It Works</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+    <div class="container px-6 mx-auto text-center">
+      <h2 class="mb-12 text-3xl font-bold text-gray-800 dark:text-white">How It Works</h2>
+      <div class="grid max-w-4xl grid-cols-1 gap-8 mx-auto md:grid-cols-3">
         <div class="flex flex-col items-center">
-          <div class="bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold mb-4">1</div>
-          <h3 class="text-lg font-semibold mb-2 text-gray-800 dark:text-white">Create Account</h3>
-          <p class="text-gray-600 dark:text-gray-400 text-sm">Register with email or sign in instantly with Google / GitHub.</p>
+          <div class="flex items-center justify-center mb-4 text-2xl font-bold text-white bg-blue-600 rounded-full w-14 h-14">1</div>
+          <h3 class="mb-2 text-lg font-semibold text-gray-800 dark:text-white">Create Account</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Register with email or sign in instantly with Google / GitHub.</p>
         </div>
         <div class="flex flex-col items-center">
-          <div class="bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold mb-4">2</div>
-          <h3 class="text-lg font-semibold mb-2 text-gray-800 dark:text-white">Add Contacts</h3>
-          <p class="text-gray-600 dark:text-gray-400 text-sm">Add contacts with name, phone, email, photo and social links.</p>
+          <div class="flex items-center justify-center mb-4 text-2xl font-bold text-white bg-blue-600 rounded-full w-14 h-14">2</div>
+          <h3 class="mb-2 text-lg font-semibold text-gray-800 dark:text-white">Add Contacts</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Add contacts with name, phone, email, photo and social links.</p>
         </div>
         <div class="flex flex-col items-center">
-          <div class="bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl font-bold mb-4">3</div>
-          <h3 class="text-lg font-semibold mb-2 text-gray-800 dark:text-white">Search & Manage</h3>
-          <p class="text-gray-600 dark:text-gray-400 text-sm">Search by name, email or phone. Export to Excel. View full details in a modal.</p>
+          <div class="flex items-center justify-center mb-4 text-2xl font-bold text-white bg-blue-600 rounded-full w-14 h-14">3</div>
+          <h3 class="mb-2 text-lg font-semibold text-gray-800 dark:text-white">Search & Manage</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Search by name, email or phone. Export to Excel. View full details in a modal.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Call to Action Section -->
-  <section class="bg-blue-600 text-white py-20">
-    <div class="container mx-auto text-center px-6">
-      <h2 class="text-3xl font-bold mb-4">Ready to Manage Your Contacts?</h2>
-      <p class="text-lg mb-8 text-blue-100">Sign up today and get started in under a minute.</p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4">
+  <section class="py-20 text-white bg-blue-600">
+    <div class="container px-6 mx-auto text-center">
+      <h2 class="mb-4 text-3xl font-bold">Ready to Manage Your Contacts?</h2>
+      <p class="mb-8 text-lg text-blue-100">Sign up today and get started in under a minute.</p>
+      <div class="flex flex-col justify-center gap-4 sm:flex-row">
         <a data-th-href="@{'/register'}"
-           class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300 shadow">
+           class="px-8 py-3 font-semibold text-blue-600 transition duration-300 bg-white rounded-full shadow hover:bg-gray-100">
           Create an Account
         </a>
         <a data-th-href="@{'/login'}"
-           class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-700 transition duration-300">
+           class="px-8 py-3 font-semibold text-white transition duration-300 border-2 border-white rounded-full hover:bg-white hover:text-blue-700">
           Login
         </a>
       </div>
@@ -102,21 +102,21 @@
 
   <!-- Testimonials Section -->
   <section class="py-20 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold mb-12 text-gray-800 dark:text-white">What Our Users Say</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div class="p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow hover:shadow-lg transition duration-300">
+    <div class="container px-6 mx-auto text-center">
+      <h2 class="mb-12 text-3xl font-bold text-gray-800 dark:text-white">What Our Users Say</h2>
+      <div class="grid max-w-4xl grid-cols-1 gap-8 mx-auto md:grid-cols-2">
+        <div class="p-8 transition duration-300 shadow bg-gray-50 dark:bg-gray-800 rounded-2xl hover:shadow-lg">
           <div class="flex items-center mb-4">
-            <div class="text-yellow-400 text-lg">★★★★★</div>
+            <div class="text-lg text-yellow-400">★★★★★</div>
           </div>
-          <p class="text-gray-600 dark:text-gray-300 italic mb-4">"SCM 2.0 has completely replaced my messy spreadsheet. It's fast, secure, and the Google login is a game changer!"</p>
+          <p class="mb-4 italic text-gray-600 dark:text-gray-300">"SCM 2.0 has completely replaced my messy spreadsheet. It's fast, secure, and the Google login is a game changer!"</p>
           <h4 class="text-lg font-semibold text-gray-800 dark:text-white">— Priya Sharma</h4>
         </div>
-        <div class="p-8 bg-gray-50 dark:bg-gray-800 rounded-2xl shadow hover:shadow-lg transition duration-300">
+        <div class="p-8 transition duration-300 shadow bg-gray-50 dark:bg-gray-800 rounded-2xl hover:shadow-lg">
           <div class="flex items-center mb-4">
-            <div class="text-yellow-400 text-lg">★★★★★</div>
+            <div class="text-lg text-yellow-400">★★★★★</div>
           </div>
-          <p class="text-gray-600 dark:text-gray-300 italic mb-4">"The photo upload and LinkedIn link features are exactly what I needed. My entire network is organised now."</p>
+          <p class="mb-4 italic text-gray-600 dark:text-gray-300">"The photo upload and LinkedIn link features are exactly what I needed. My entire network is organised now."</p>
           <h4 class="text-lg font-semibold text-gray-800 dark:text-white">— Rohan Mehta</h4>
         </div>
       </div>
@@ -125,42 +125,42 @@
 
   <!-- Contact Section -->
   <section class="py-20 bg-gray-100 dark:bg-gray-800">
-    <div class="container mx-auto text-center px-6">
-      <h2 class="text-3xl font-bold mb-4 text-gray-800 dark:text-white">Have a Question?</h2>
-      <p class="text-gray-600 dark:text-gray-400 mb-8">Reach out to us and we'll get back to you within 24 hours.</p>
+    <div class="container px-6 mx-auto text-center">
+      <h2 class="mb-4 text-3xl font-bold text-gray-800 dark:text-white">Have a Question?</h2>
+      <p class="mb-8 text-gray-600 dark:text-gray-400">Reach out to us and we'll get back to you within 24 hours.</p>
       <a data-th-href="@{'/contact'}"
-         class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300 inline-block">
+         class="inline-block px-8 py-3 font-semibold text-white transition duration-300 bg-blue-600 rounded-full hover:bg-blue-700">
         Contact Us
       </a>
     </div>
   </section>
 
   <!-- Footer Section -->
-  <footer class="bg-gray-800 text-white py-10">
-    <div class="container mx-auto px-6">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+  <footer class="py-10 text-white bg-gray-800">
+    <div class="container px-6 mx-auto">
+      <div class="grid grid-cols-1 gap-8 mb-8 md:grid-cols-3">
         <div>
-          <h3 class="text-lg font-semibold mb-3">SCM 2.0</h3>
-          <p class="text-gray-400 text-sm">Smart Contact Manager — your personal, cloud-powered address book.</p>
+          <h3 class="mb-3 text-lg font-semibold">SCM 2.0</h3>
+          <p class="text-sm text-gray-400">Smart Contact Manager — your personal, cloud-powered address book.</p>
         </div>
         <div>
-          <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
+          <h3 class="mb-3 text-lg font-semibold">Quick Links</h3>
           <ul class="space-y-2 text-sm text-gray-400">
-            <li><a data-th-href="@{'/home'}" class="hover:text-white transition">Home</a></li>
-            <li><a data-th-href="@{'/about'}" class="hover:text-white transition">About</a></li>
-            <li><a data-th-href="@{'/services'}" class="hover:text-white transition">Services</a></li>
-            <li><a data-th-href="@{'/contact'}" class="hover:text-white transition">Contact</a></li>
+            <li><a data-th-href="@{'/home'}" class="transition hover:text-white">Home</a></li>
+            <li><a data-th-href="@{'/about'}" class="transition hover:text-white">About</a></li>
+            <li><a data-th-href="@{'/services'}" class="transition hover:text-white">Services</a></li>
+            <li><a data-th-href="@{'/contact'}" class="transition hover:text-white">Contact</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="text-lg font-semibold mb-3">Account</h3>
+          <h3 class="mb-3 text-lg font-semibold">Account</h3>
           <ul class="space-y-2 text-sm text-gray-400">
-            <li><a data-th-href="@{'/login'}" class="hover:text-white transition">Login</a></li>
-            <li><a data-th-href="@{'/register'}" class="hover:text-white transition">Sign Up</a></li>
+            <li><a data-th-href="@{'/login'}" class="transition hover:text-white">Login</a></li>
+            <li><a data-th-href="@{'/register'}" class="transition hover:text-white">Sign Up</a></li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+      <div class="pt-6 text-sm text-center text-gray-400 border-t border-gray-700">
         <p>&copy; 2024 Smart Contact Manager. All rights reserved.</p>
       </div>
     </div>
