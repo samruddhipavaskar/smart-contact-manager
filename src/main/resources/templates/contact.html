@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+  <title>Contact Us | SCM 2.0</title>
+</head>
+<body>
+<div id="content">
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-blue-700 to-blue-500 text-white py-20">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h1 class="text-5xl font-bold mb-4">Get In Touch</h1>
+      <p class="text-xl text-blue-100">Have a question or feedback? We'd love to hear from you.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16 bg-white dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
+
+      <!-- Info Side -->
+      <div>
+        <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Contact Information</h2>
+
+        <div class="space-y-6">
+          <div class="flex items-start gap-4">
+            <div class="bg-blue-100 dark:bg-blue-900 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-envelope text-blue-600 dark:text-blue-300"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-800 dark:text-white">Email</p>
+              <p class="text-gray-600 dark:text-gray-300">support@scm2app.com</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="bg-blue-100 dark:bg-blue-900 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-phone text-blue-600 dark:text-blue-300"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-800 dark:text-white">Phone</p>
+              <p class="text-gray-600 dark:text-gray-300">+91 98765 43210</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="bg-blue-100 dark:bg-blue-900 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-map-marker-alt text-blue-600 dark:text-blue-300"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-800 dark:text-white">Location</p>
+              <p class="text-gray-600 dark:text-gray-300">Goa, India</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="bg-blue-100 dark:bg-blue-900 w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-clock text-blue-600 dark:text-blue-300"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-800 dark:text-white">Support Hours</p>
+              <p class="text-gray-600 dark:text-gray-300">Mon – Fri, 9am – 6pm IST</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="mt-10">
+          <p class="font-semibold text-gray-800 dark:text-white mb-4">Follow Us</p>
+          <div class="flex gap-4">
+            <a href="#" class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700 transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="bg-gray-800 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-700 transition">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="bg-blue-700 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-800 transition">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Side -->
+      <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Send a Message</h2>
+
+        <!-- Success message shown after submit -->
+        <div id="success_msg" class="hidden mb-4 p-4 bg-green-100 text-green-800 rounded-lg">
+          <i class="fas fa-check-circle mr-2"></i>
+          Thank you! Your message has been sent. We'll get back to you within 24 hours.
+        </div>
+        <div id="error_msg" class="hidden mb-4 p-4 bg-red-100 text-red-800 rounded-lg">
+          <i class="fas fa-exclamation-circle mr-2"></i>
+          Please fill in all required fields.
+        </div>
+
+        <form id="contact_form" novalidate>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Full Name <span class="text-red-500">*</span>
+            </label>
+            <input
+              id="cf_name"
+              type="text"
+              placeholder="Your full name"
+              class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Email Address <span class="text-red-500">*</span>
+            </label>
+            <input
+              id="cf_email"
+              type="email"
+              placeholder="you@example.com"
+              class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Subject <span class="text-red-500">*</span>
+            </label>
+            <select
+              id="cf_subject"
+              class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="">Select a subject</option>
+              <option value="General Enquiry">General Enquiry</option>
+              <option value="Technical Support">Technical Support</option>
+              <option value="Bug Report">Bug Report</option>
+              <option value="Feature Request">Feature Request</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Message <span class="text-red-500">*</span>
+            </label>
+            <textarea
+              id="cf_message"
+              rows="5"
+              placeholder="Write your message here..."
+              class="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 resize-none"
+            ></textarea>
+          </div>
+
+          <button
+            type="button"
+            onclick="submitContactForm()"
+            class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition flex items-center justify-center gap-2"
+          >
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-10 text-gray-800 dark:text-white">Frequently Asked Questions</h2>
+
+      <div class="space-y-4" id="faq_container">
+
+        <div class="bg-white dark:bg-gray-700 rounded-xl shadow">
+          <button onclick="toggleFaq(this)"
+            class="w-full text-left p-5 font-semibold text-gray-800 dark:text-white flex justify-between items-center">
+            <span>Is SCM 2.0 free to use?</span>
+            <i class="fas fa-chevron-down text-blue-600 transition-transform"></i>
+          </button>
+          <div class="faq-answer hidden px-5 pb-5 text-gray-600 dark:text-gray-300">
+            Yes! SCM 2.0 is completely free. There are no hidden charges or subscription plans.
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-700 rounded-xl shadow">
+          <button onclick="toggleFaq(this)"
+            class="w-full text-left p-5 font-semibold text-gray-800 dark:text-white flex justify-between items-center">
+            <span>How is my data kept secure?</span>
+            <i class="fas fa-chevron-down text-blue-600 transition-transform"></i>
+          </button>
+          <div class="faq-answer hidden px-5 pb-5 text-gray-600 dark:text-gray-300">
+            Your data is stored in a secured MySQL database. Passwords are BCrypt-hashed. OAuth2 login
+            means we never see your Google or GitHub password. Images are stored on Cloudinary with private access keys.
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-700 rounded-xl shadow">
+          <button onclick="toggleFaq(this)"
+            class="w-full text-left p-5 font-semibold text-gray-800 dark:text-white flex justify-between items-center">
+            <span>Can I export my contacts?</span>
+            <i class="fas fa-chevron-down text-blue-600 transition-transform"></i>
+          </button>
+          <div class="faq-answer hidden px-5 pb-5 text-gray-600 dark:text-gray-300">
+            Yes. On the Contacts page, click the Export button to download all your contacts as an Excel (.xlsx) file.
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-700 rounded-xl shadow">
+          <button onclick="toggleFaq(this)"
+            class="w-full text-left p-5 font-semibold text-gray-800 dark:text-white flex justify-between items-center">
+            <span>Which login methods are supported?</span>
+            <i class="fas fa-chevron-down text-blue-600 transition-transform"></i>
+          </button>
+          <div class="faq-answer hidden px-5 pb-5 text-gray-600 dark:text-gray-300">
+            You can register with an email and password, or sign in instantly using your Google or GitHub account via OAuth2.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 Smart Contact Manager. All rights reserved.</p>
+    </div>
+  </footer>
+
+</div>
+<script>
+  function submitContactForm() {
+    const name    = document.getElementById('cf_name').value.trim();
+    const email   = document.getElementById('cf_email').value.trim();
+    const subject = document.getElementById('cf_subject').value;
+    const message = document.getElementById('cf_message').value.trim();
+
+    document.getElementById('success_msg').classList.add('hidden');
+    document.getElementById('error_msg').classList.add('hidden');
+
+    if (!name || !email || !subject || !message) {
+      document.getElementById('error_msg').classList.remove('hidden');
+      return;
+    }
+
+    // In a real app you'd POST to a backend endpoint here.
+    // For now, show success and reset the form.
+    document.getElementById('contact_form').reset();
+    document.getElementById('success_msg').classList.remove('hidden');
+    window.scrollTo({ top: document.getElementById('success_msg').offsetTop - 100, behavior: 'smooth' });
+  }
+
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const icon   = btn.querySelector('i');
+    answer.classList.toggle('hidden');
+    icon.classList.toggle('rotate-180');
+  }
+</script>
+</body>
+</html>

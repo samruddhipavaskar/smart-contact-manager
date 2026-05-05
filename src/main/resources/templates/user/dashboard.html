@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+<head>
+  <title data-th-text="${loggedInUser.name} + ' | Dashboard'">Dashboard | SCM</title>
+</head>
+<body>
+<div id="content">
+
+  <!-- Sidebar -->
+  <div th:if="${loggedInUser}">
+    <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="sm:pl-64 pt-20 min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="p-6">
+
+      <!-- Welcome Banner -->
+      <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl p-8 mb-8 shadow-lg">
+        <div class="flex flex-col md:flex-row items-center gap-6">
+          <img
+            onerror="this.src='https://static-00.iconduck.com/assets.00/profile-default-icon-2048x2045-u3j7s5nj.png'"
+            data-th-src="@{${loggedInUser.profilePic}}"
+            class="w-20 h-20 rounded-full border-4 border-white shadow-md object-cover"
+            alt="Profile"
+          />
+          <div>
+            <h1 class="text-3xl font-bold" data-th-text="'Welcome back, ' + ${loggedInUser.name} + '!'">Welcome back!</h1>
+            <p class="text-blue-100 mt-1" data-th-text="${loggedInUser.email}">user@email.com</p>
+            <span
+              class="inline-block mt-2 bg-white text-blue-700 text-xs font-semibold px-3 py-1 rounded-full"
+              data-th-text="${loggedInUser.emailVerified} ? 'Email Verified ✓' : 'Email Not Verified'"
+            >Email Verified ✓</span>
+          </div>
+          <div class="md:ml-auto flex gap-3">
+            <a data-th-href="@{'/user/contacts/add'}"
+               class="bg-white text-blue-700 font-semibold px-5 py-2 rounded-lg hover:bg-blue-50 transition flex items-center gap-2">
+              <i class="fas fa-plus"></i> Add Contact
+            </a>
+            <a data-th-href="@{'/user/contacts'}"
+               class="bg-blue-800 text-white font-semibold px-5 py-2 rounded-lg hover:bg-blue-900 transition flex items-center gap-2">
+              <i class="fas fa-address-book"></i> View All
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow flex items-center gap-5">
+          <div class="bg-blue-100 dark:bg-blue-900 w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-address-book text-blue-600 dark:text-blue-300 text-2xl"></i>
+          </div>
+          <div>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">Total Contacts</p>
+            <p class="text-3xl font-bold text-gray-800 dark:text-white" data-th-text="${totalContacts}">0</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow flex items-center gap-5">
+          <div class="bg-yellow-100 dark:bg-yellow-900 w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-star text-yellow-500 dark:text-yellow-300 text-2xl"></i>
+          </div>
+          <div>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">Favourites</p>
+            <p class="text-3xl font-bold text-gray-800 dark:text-white" data-th-text="${favouriteContacts}">0</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow flex items-center gap-5">
+          <div class="bg-green-100 dark:bg-green-900 w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-check-circle text-green-600 dark:text-green-300 text-2xl"></i>
+          </div>
+          <div>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">Account Status</p>
+            <p class="text-lg font-bold text-green-600 dark:text-green-400" data-th-text="${loggedInUser.enabled} ? 'Active' : 'Inactive'">Active</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow flex items-center gap-5">
+          <div class="bg-purple-100 dark:bg-purple-900 w-14 h-14 rounded-full flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-sign-in-alt text-purple-600 dark:text-purple-300 text-2xl"></i>
+          </div>
+          <div>
+            <p class="text-gray-500 dark:text-gray-400 text-sm">Login Provider</p>
+            <p class="text-lg font-bold text-gray-800 dark:text-white" data-th-text="${loggedInUser.provider}">SELF</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Actions + Recent Contacts -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- Quick Actions -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow">
+          <h2 class="text-lg font-bold text-gray-800 dark:text-white mb-5">Quick Actions</h2>
+          <div class="space-y-3">
+            <a data-th-href="@{'/user/contacts/add'}"
+               class="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition group">
+              <div class="bg-blue-100 dark:bg-blue-900 w-10 h-10 rounded-full flex items-center justify-center">
+                <i class="fas fa-plus text-blue-600 dark:text-blue-300"></i>
+              </div>
+              <span class="text-gray-700 dark:text-gray-200 font-medium group-hover:text-blue-600">Add New Contact</span>
+              <i class="fas fa-arrow-right ml-auto text-gray-400 group-hover:text-blue-600"></i>
+            </a>
+            <a data-th-href="@{'/user/contacts'}"
+               class="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition group">
+              <div class="bg-green-100 dark:bg-green-900 w-10 h-10 rounded-full flex items-center justify-center">
+                <i class="fas fa-list text-green-600 dark:text-green-300"></i>
+              </div>
+              <span class="text-gray-700 dark:text-gray-200 font-medium group-hover:text-green-600">View All Contacts</span>
+              <i class="fas fa-arrow-right ml-auto text-gray-400 group-hover:text-green-600"></i>
+            </a>
+            <a data-th-href="@{'/user/profile'}"
+               class="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition group">
+              <div class="bg-purple-100 dark:bg-purple-900 w-10 h-10 rounded-full flex items-center justify-center">
+                <i class="fas fa-user-cog text-purple-600 dark:text-purple-300"></i>
+              </div>
+              <span class="text-gray-700 dark:text-gray-200 font-medium group-hover:text-purple-600">Edit Profile</span>
+              <i class="fas fa-arrow-right ml-auto text-gray-400 group-hover:text-purple-600"></i>
+            </a>
+            <a data-th-href="@{'/do-logout'}"
+               class="flex items-center gap-4 p-3 rounded-xl hover:bg-red-50 dark:hover:bg-red-900/20 transition group">
+              <div class="bg-red-100 dark:bg-red-900 w-10 h-10 rounded-full flex items-center justify-center">
+                <i class="fas fa-sign-out-alt text-red-600 dark:text-red-300"></i>
+              </div>
+              <span class="text-gray-700 dark:text-gray-200 font-medium group-hover:text-red-600">Logout</span>
+              <i class="fas fa-arrow-right ml-auto text-gray-400 group-hover:text-red-600"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Recent Contacts -->
+        <div class="lg:col-span-2 bg-white dark:bg-gray-800 rounded-2xl p-6 shadow">
+          <div class="flex justify-between items-center mb-5">
+            <h2 class="text-lg font-bold text-gray-800 dark:text-white">Recent Contacts</h2>
+            <a data-th-href="@{'/user/contacts'}" class="text-sm text-blue-600 hover:underline">View all →</a>
+          </div>
+
+          <!-- Has contacts -->
+          <div data-th-if="${recentContacts != null and !recentContacts.isEmpty()}">
+            <div class="space-y-3">
+              <div
+                data-th-each="contact : ${recentContacts}"
+                class="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+              >
+                <img
+                  onerror="this.src='https://static-00.iconduck.com/assets.00/profile-default-icon-2048x2045-u3j7s5nj.png'"
+                  data-th-src="@{${contact.picture}}"
+                  class="w-12 h-12 rounded-full object-cover border border-gray-200 dark:border-gray-600"
+                  alt="Contact"
+                />
+                <div class="flex-1 min-w-0">
+                  <p class="font-semibold text-gray-800 dark:text-white truncate" data-th-text="${contact.name}">Name</p>
+                  <p class="text-sm text-gray-500 dark:text-gray-400 truncate" data-th-text="${contact.email}">email</p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span data-th-if="${contact.favorite}" class="text-yellow-400"><i class="fas fa-star"></i></span>
+                  <a data-th-href="@{'/user/contacts/view/' + ${contact.id}}"
+                     class="text-blue-600 hover:text-blue-800 dark:hover:text-blue-400">
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- No contacts -->
+          <div data-th-if="${recentContacts == null or recentContacts.isEmpty()}"
+               class="flex flex-col items-center justify-center py-12 text-center">
+            <i class="fas fa-address-book text-gray-300 dark:text-gray-600 text-6xl mb-4"></i>
+            <p class="text-gray-500 dark:text-gray-400 mb-4">No contacts yet. Add your first one!</p>
+            <a data-th-href="@{'/user/contacts/add'}"
+               class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
+              <i class="fas fa-plus mr-2"></i>Add Contact
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<script>
+  console.log("dashboard page");
+</script>
+</body>
+</html>

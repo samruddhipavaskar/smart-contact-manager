@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{})}">
+<head>
+  <title>Services | SCM 2.0</title>
+</head>
+<body>
+<section id="content">
+
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-blue-700 to-indigo-600 text-white py-20">
+    <div class="max-w-4xl mx-auto text-center px-6">
+      <h1 class="text-5xl font-bold mb-4">Our Services</h1>
+      <p class="text-xl text-blue-100">Everything you need to manage your contacts — all in one place.</p>
+    </div>
+  </section>
+
+  <!-- Core Services -->
+  <section class="py-16 bg-white dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">Core Features</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+          <div class="bg-blue-100 dark:bg-blue-900 w-14 h-14 rounded-full flex items-center justify-center mb-5">
+            <i class="fas fa-user-plus text-blue-600 dark:text-blue-300 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Add Contacts</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            Quickly add contacts with name, email, phone, address, LinkedIn, website and a profile photo.
+            All data is stored securely in the cloud.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+          <div class="bg-green-100 dark:bg-green-900 w-14 h-14 rounded-full flex items-center justify-center mb-5">
+            <i class="fas fa-search text-green-600 dark:text-green-300 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Smart Search</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            Find any contact instantly by name, email, or phone number with live search across your
+            entire contacts list.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+          <div class="bg-purple-100 dark:bg-purple-900 w-14 h-14 rounded-full flex items-center justify-center mb-5">
+            <i class="fas fa-cloud text-purple-600 dark:text-purple-300 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Cloud Storage</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            Contact photos are stored on Cloudinary's CDN for fast, reliable delivery anywhere in the world.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+          <div class="bg-red-100 dark:bg-red-900 w-14 h-14 rounded-full flex items-center justify-center mb-5">
+            <i class="fas fa-lock text-red-600 dark:text-red-300 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Secure Login</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            Sign in with your Google or GitHub account using industry-standard OAuth2 — no need to remember
+            another password.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+          <div class="bg-yellow-100 dark:bg-yellow-900 w-14 h-14 rounded-full flex items-center justify-center mb-5">
+            <i class="fas fa-star text-yellow-500 dark:text-yellow-300 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Favourites</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            Mark your most important contacts as favourites so they're easy to spot at a glance in your contact list.
+          </p>
+        </div>
+
+        <div class="bg-gray-50 dark:bg-gray-800 p-8 rounded-2xl shadow hover:shadow-lg transition transform hover:-translate-y-1">
+          <div class="bg-teal-100 dark:bg-teal-900 w-14 h-14 rounded-full flex items-center justify-center mb-5">
+            <i class="fas fa-file-excel text-teal-600 dark:text-teal-300 text-2xl"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-3 text-gray-800 dark:text-white">Export to Excel</h3>
+          <p class="text-gray-600 dark:text-gray-300">
+            Download your entire contacts list as an Excel spreadsheet in one click for offline use or backup.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gray-800 dark:text-white">How It Works</h2>
+      <div class="space-y-8">
+
+        <div class="flex items-start gap-6">
+          <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">1</div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-1">Create your account</h3>
+            <p class="text-gray-600 dark:text-gray-300">Register with your email and verify it, or sign in instantly with Google or GitHub OAuth2.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-6">
+          <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">2</div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-1">Add your contacts</h3>
+            <p class="text-gray-600 dark:text-gray-300">Fill in a contact's details — name, email, phone, address, social links, and a photo. Hit Save.</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-6">
+          <div class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0">3</div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-1">Search, edit, export</h3>
+            <p class="text-gray-600 dark:text-gray-300">Search by name, email or phone. View full contact details in a modal. Edit or delete any time. Export to Excel.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Plans -->
+  <section class="py-16 bg-white dark:bg-gray-900">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold mb-4 text-gray-800 dark:text-white">100% Free</h2>
+      <p class="text-gray-600 dark:text-gray-300 text-lg mb-8">
+        SCM 2.0 is completely free to use. No hidden fees, no subscriptions. Your contacts, always available.
+      </p>
+      <a data-th-href="@{'/register'}"
+         class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition inline-block">
+        Get Started Free
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto text-center">
+      <p>&copy; 2024 Smart Contact Manager. All rights reserved.</p>
+    </div>
+  </footer>
+
+</section>
+</body>
+</html>
