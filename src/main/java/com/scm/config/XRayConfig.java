@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import com.amazonaws.xray.javax.servlet.AWSXRayServletFilter;
-import javax.servlet.Filter;
+import jakarta.servlet.Filter;
 
 @Configuration
 @EnableAspectJAutoProxy
