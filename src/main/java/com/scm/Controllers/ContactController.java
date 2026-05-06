@@ -31,6 +31,11 @@ import com.scm.services.UserService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Timer;
+import com.amazonaws.xray.AWSXRay;
+
+
 @Controller
 @RequestMapping("/user/contacts")
 public class ContactController {
@@ -46,6 +51,10 @@ public class ContactController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private MeterRegistry meterRegistry;
+
+
     @RequestMapping("/add")
     // add contact page: handler
     public String addContactView(Model model) {
@@ -56,68 +65,177 @@ public class ContactController {
         return "user/add_contact";
     }
 
+    // @RequestMapping(value = "/add", method = RequestMethod.POST)
+    // public String saveContact(@Valid @ModelAttribute ContactForm contactForm, BindingResult result,
+    //         Authentication authentication, HttpSession session) {
+
+    //     // process the form data
+
+    //     // 1 validate form
+
+    //     if (result.hasErrors()) {
+
+    //         result.getAllErrors().forEach(error -> logger.info(error.toString()));
+
+    //         session.setAttribute("message", Message.builder()
+    //                 .content("Please correct the following errors")
+    //                 .type(MessageType.red)
+    //                 .build());
+    //         return "user/add_contact";
+    //     }
+
+    //     String username = Helper.getEmailOfLoggedInUser(authentication);
+    //     // form ---> contact
+
+    //     User user = userService.getUserByEmail(username);
+    //     // 2 process the contact picture
+
+    //     // image process
+
+    //     // uplod karne ka code
+    //     Contact contact = new Contact();
+    //     contact.setName(contactForm.getName());
+    //     contact.setFavorite(contactForm.isFavorite());
+    //     contact.setEmail(contactForm.getEmail());
+    //     contact.setPhoneNumber(contactForm.getPhoneNumber());
+    //     contact.setAddress(contactForm.getAddress());
+    //     contact.setDescription(contactForm.getDescription());
+    //     contact.setUser(user);
+    //     contact.setLinkedInLink(contactForm.getLinkedInLink());
+    //     contact.setWebsiteLink(contactForm.getWebsiteLink());
+
+    //     if (contactForm.getContactImage() != null && !contactForm.getContactImage().isEmpty()) {
+    //         String filename = UUID.randomUUID().toString();
+    //         String fileURL = imageService.uploadImage(contactForm.getContactImage(), filename);
+    //         contact.setPicture(fileURL);
+    //         contact.setCloudinaryImagePublicId(filename);
+
+    //     }
+    //     contactService.save(contact);
+    //     System.out.println(contactForm);
+
+    //     // 3 set the contact picture url
+
+    //     // 4 `set message to be displayed on the view
+
+    //     session.setAttribute("message",
+    //             Message.builder()
+    //                     .content("You have successfully added a new contact")
+    //                     .type(MessageType.green)
+    //                     .build());
+
+    //     return "redirect:/user/contacts/add";
+
+    // }
+
+    
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String saveContact(@Valid @ModelAttribute ContactForm contactForm, BindingResult result,
-            Authentication authentication, HttpSession session) {
+    public String saveContact(
+            @Valid @ModelAttribute ContactForm contactForm,
+            BindingResult result,
+            Authentication authentication,
+            HttpSession session) {
 
-        // process the form data
+        // Start latency timer
+        Timer.Sample sample = Timer.start(meterRegistry);
 
-        // 1 validate form
+        try {
 
-        if (result.hasErrors()) {
+            // Start X-Ray tracing subsegment
+            AWSXRay.beginSubsegment("saveContact");
 
-            result.getAllErrors().forEach(error -> logger.info(error.toString()));
+            logger.info("Starting save contact process");
 
-            session.setAttribute("message", Message.builder()
-                    .content("Please correct the following errors")
-                    .type(MessageType.red)
-                    .build());
-            return "user/add_contact";
+            // Validation check
+            if (result.hasErrors()) {
+
+                meterRegistry.counter("scm.contact.validation.error").increment();
+
+                result.getAllErrors()
+                        .forEach(error -> logger.info(error.toString()));
+
+                session.setAttribute("message",
+                        Message.builder()
+                                .content("Please correct the following errors")
+                                .type(MessageType.red)
+                                .build());
+
+                return "user/add_contact";
+            }
+
+            String username = Helper.getEmailOfLoggedInUser(authentication);
+
+            User user = userService.getUserByEmail(username);
+
+            Contact contact = new Contact();
+
+            contact.setName(contactForm.getName());
+            contact.setFavorite(contactForm.isFavorite());
+            contact.setEmail(contactForm.getEmail());
+            contact.setPhoneNumber(contactForm.getPhoneNumber());
+            contact.setAddress(contactForm.getAddress());
+            contact.setDescription(contactForm.getDescription());
+            contact.setUser(user);
+            contact.setLinkedInLink(contactForm.getLinkedInLink());
+            contact.setWebsiteLink(contactForm.getWebsiteLink());
+
+            // Image upload processing
+            if (contactForm.getContactImage() != null &&
+                    !contactForm.getContactImage().isEmpty()) {
+
+                String filename = UUID.randomUUID().toString();
+
+                String fileURL = imageService.uploadImage(
+                        contactForm.getContactImage(),
+                        filename);
+
+                contact.setPicture(fileURL);
+                contact.setCloudinaryImagePublicId(filename);
+            }
+
+            // Save contact
+            contactService.save(contact);
+
+            logger.info("Contact saved successfully");
+
+            // SUCCESS METRIC
+            meterRegistry.counter("scm.contact.add.success").increment();
+
+            session.setAttribute("message",
+                    Message.builder()
+                            .content("You have successfully added a new contact")
+                            .type(MessageType.green)
+                            .build());
+
+            return "redirect:/user/contacts/add";
+
+        } catch (Exception e) {
+
+            // ERROR METRIC
+            meterRegistry.counter("scm.contact.add.error").increment();
+
+            // Add exception to X-Ray trace
+            AWSXRay.getCurrentSegment().addException(e);
+
+            logger.error("Error while saving contact", e);
+
+            throw e;
+
+        } finally {
+
+            // End X-Ray tracing
+            AWSXRay.endSubsegment();
+
+            // Stop latency timer
+            sample.stop(
+                    meterRegistry.timer(
+                            "scm.contact.add.latency",
+                            "endpoint",
+                            "/user/contacts/add"));
         }
-
-        String username = Helper.getEmailOfLoggedInUser(authentication);
-        // form ---> contact
-
-        User user = userService.getUserByEmail(username);
-        // 2 process the contact picture
-
-        // image process
-
-        // uplod karne ka code
-        Contact contact = new Contact();
-        contact.setName(contactForm.getName());
-        contact.setFavorite(contactForm.isFavorite());
-        contact.setEmail(contactForm.getEmail());
-        contact.setPhoneNumber(contactForm.getPhoneNumber());
-        contact.setAddress(contactForm.getAddress());
-        contact.setDescription(contactForm.getDescription());
-        contact.setUser(user);
-        contact.setLinkedInLink(contactForm.getLinkedInLink());
-        contact.setWebsiteLink(contactForm.getWebsiteLink());
-
-        if (contactForm.getContactImage() != null && !contactForm.getContactImage().isEmpty()) {
-            String filename = UUID.randomUUID().toString();
-            String fileURL = imageService.uploadImage(contactForm.getContactImage(), filename);
-            contact.setPicture(fileURL);
-            contact.setCloudinaryImagePublicId(filename);
-
-        }
-        contactService.save(contact);
-        System.out.println(contactForm);
-
-        // 3 set the contact picture url
-
-        // 4 `set message to be displayed on the view
-
-        session.setAttribute("message",
-                Message.builder()
-                        .content("You have successfully added a new contact")
-                        .type(MessageType.green)
-                        .build());
-
-        return "redirect:/user/contacts/add";
-
     }
+
+
 
      @RequestMapping
     public String viewContacts(
