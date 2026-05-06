@@ -27,6 +27,6 @@ public class MetricsConfig {
             public String namespace() { return "SCM2/Application"; }
             public Duration step() { return Duration.ofMinutes(1); }
         };
-        return new CloudWatchMeterRegistry(config, Clock.SYSTEM, cwClient);
+        return new CloudWatchMeterRegistry(config, Clock.SYSTEM, cwClient); 
     }
 }

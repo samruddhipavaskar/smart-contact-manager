@@ -120,10 +120,9 @@
 
 		<!-- Micrometer CloudWatch registry -->
 		<dependency>
-		<groupId>io.micrometer</groupId>
-		<artifactId>micrometer-registry-cloudwatch2</artifactId>
-		<version>1.12.5</version>
-		</dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-cloudwatch2</artifactId>
+        </dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
